@@ -1,6 +1,6 @@
 #users
-User.create(username: 'test', email: 'test', password: 'test')
-User.create(username: 'test2', email: 'test2', password: 'test2')
+User.create(username: 'test', email: 'test@test.com', password: 'test')
+User.create(username: 'test2', email: 'test2@test2.com', password: 'test2')
 
 #Question
 
