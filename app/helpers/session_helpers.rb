@@ -1,5 +1,5 @@
 def current_user
-  @current_user ||= User.find_by(id: sessions[:user_id]) #Assigns the instance variable to the the user whose id matches the session id
+  @current_user ||= User.find_by(id: session[:user_id]) #Assigns the instance variable to the the user whose id matches the session id
 end
 
 def logged_in?
