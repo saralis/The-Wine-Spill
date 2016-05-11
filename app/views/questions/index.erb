@@ -1,0 +1,10 @@
+<h1>Questions:</h1>
+<%if current_user%>
+  <a href="/questions/new">Ask a question.</a>
+<%end%>
+<ul>
+  <%@questions.each do |question|%>
+    <li><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
+  <%end%>
+</ul>
+
