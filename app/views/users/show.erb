@@ -1,0 +1,13 @@
+<div id="delete-user-form">
+
+  <h2><%=@user.username%></h2>
+  <h3><%=@user.email%></h3>
+
+  <form action="/users/<%=@user.id%>" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Your Profile" >
+  </form>
+
+  <p>*We are sad to see you go!*</p>
+
+</div>
