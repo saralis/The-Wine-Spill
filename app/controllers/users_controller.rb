@@ -14,7 +14,6 @@ post '/users' do
 end
 
 get '/users/:id' do
-  require_same_user
   @user = User.find_by(id: params[:id])
   erb :'users/show' # Show page is also the delete form
 end
