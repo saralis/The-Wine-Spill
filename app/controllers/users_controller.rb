@@ -14,11 +14,13 @@ post '/users' do
 end
 
 get '/users/:id' do
+  require_same_user
   @user = User.find_by(id: params[:id])
   erb :'users/show' # Show page is also the delete form
 end
 
 delete '/users/:id' do
+  require_same_user
   user = User.find_by(id: params[:id])
   user.destroy
   redirect '/questions'
