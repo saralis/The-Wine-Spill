@@ -16,7 +16,7 @@ put '/questions/:question_id/answers/:answers_id' do
   if @answer.save
     redirect "/questions/#{question.id}"
   else
-    erb :'/questions/:question_id'
+    erb :'/questions/edit'
   end
 end
 
