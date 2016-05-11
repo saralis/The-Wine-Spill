@@ -31,7 +31,6 @@ end
 
 
 get '/questions/:id/edit' do
-  require_same_user #Session helper that allows the user who posted the question to edit it
   @question = Question.find(params[:id]) #define intstance variable for view
   erb :'questions/edit' #show edit question view
 
@@ -51,7 +50,6 @@ end
 
 
 delete '/questions/:id' do
-  require_same_user #Session helper that allows the user who posted the question to delete it it
   @question = Question.find(params[:id]) #define question to delete
   @question.destroy #delete question
   redirect '/questions' #redirect back to questions index page

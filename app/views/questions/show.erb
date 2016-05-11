@@ -2,7 +2,7 @@
 <p><%=@question.body%></p>
 <p>Views: <%=@question.view_count%></p>
 <p>User: <%=@user.username%></p>
-<% if require_same_user %>
+<% if same_user %>
   <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Your Question">
