@@ -1,9 +1,10 @@
-<%if current_user%>
-  <h1>New Question</h1>
+<%require_user%>
+<h1>New Question</h1>
 
-  <form method="post" action="/questions">
-    <input name="question[title]" type="text" placeholder="Title">
-    <input name="question[body]" type="text" placeholder="Body">
-    <input type="submit" value="Create">
-  </form>
-<%end%>
+<form method="post" action="/questions">
+  <input name="question[title]" type="text" placeholder="Title">
+  <input name="question[body]" type="text" placeholder="Body">
+  <input type="submit" value="Create">
+</form>
+
+
