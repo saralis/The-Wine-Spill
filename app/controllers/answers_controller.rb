@@ -9,7 +9,7 @@ post '/questions/:question_id/answers' do
   end
 end
 
-put '/questions/:question_id/answers/:answers_id'
+put '/questions/:question_id/answers/:answers_id' do
   @question = Question.find(params[:question_id])
   @answer = @question.answers.find(params[:id])
 
@@ -17,9 +17,10 @@ put '/questions/:question_id/answers/:answers_id'
     redirect "/questions/#{question.id}/answers"
   else
     erb :'/questions/:question_id/answers/:answers_id'
+  end
 end
 
-delete '/questions/:question_id/answers/:answers_id'
+delete '/questions/:question_id/answers/:answers_id' do
   @question = Question.find(params[:question_id])
   @answer = @question.answers.find(params[:id])
 
