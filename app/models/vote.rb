@@ -4,3 +4,5 @@ class Vote < ActiveRecord::Base
   belongs_to :user, presence: true, uniqueness: true 
 
 end
+
+####
