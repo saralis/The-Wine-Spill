@@ -1,5 +1,5 @@
 get '/users/new' do
-  erb :'user/new' # Get new user form
+  erb :'users/new' # Get new user form
 end
 
 post '/users' do
