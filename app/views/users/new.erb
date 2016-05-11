@@ -1,0 +1,29 @@
+<h2>Sign Up</h2>
+<h4>Spill your information here</h4>
+
+<div id="registration-form">
+  <%if @errors%>
+    <%= erb :'_errors'%>
+  <%end%>
+  <table class="table">
+    <form action="/users" method="POST">
+      <tbody>
+        <tr>
+          <td>Username:</td>
+          <td><input type="text" name="user[username]" placeholder="Name" ></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><input type="text" name="user[email]" placeholder="Email" ></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" name="user[password]" placeholder="Password" ></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Sign Up!"></td>
+        </tr>
+      </tbody>
+    </form>
+  </table>
+</div>
