@@ -1,4 +1,4 @@
 <h1><%=@question.title%></h1>
 <p><%=@question.body%></p>
 <p>Views: <%=@question.view_count%></p>
-<p>User: <%=User.find_by(id: @question.user_id)%></p>
+<p>User: <%=User.find_by(id: @question.user_id).username%></p>
