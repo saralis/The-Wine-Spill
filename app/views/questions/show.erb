@@ -1,7 +1,7 @@
 <h1><%=@question.title%></h1>
 <p><%=@question.body%></p>
 <p>Views: <%=@question.view_count%></p>
-<p>User: <%=User.find_by(id: @question.user_id)%></p>
+<p>User: <%=@user.username%></p>
 <% if require_same_user %>
   <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
     <input type="hidden" name="_method" value="delete">
@@ -12,4 +12,5 @@
     <input type="submit" value="Edit Your Question">
   </form>
 <% end %>
+
 
