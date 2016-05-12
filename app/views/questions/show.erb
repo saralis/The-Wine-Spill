@@ -2,13 +2,13 @@
   <h1><%=@question.title%></h1>
   <!-- <img class="grapes upvote" src="/images/grape-up-arrow.png"> -->
   <div class="vote-arrows">
-    <form action="/questions/<%= @question.id %>/up_votes" method="post">
-    		<input type="submit" value="Upvote">
-    </form>
-    <h3><%= @votes %></h3>
-    <form action="/questions/<%= @question.id %>/down_votes" method="post">
-    		<input type="submit" value="Downvote">
-    </form>
+  <form action="/questions/<%= @question.id %>/up_votes" method="post">
+    <input type="image" src='/images/grape-up-arrow.png' width="100">
+  </form>
+  <h3><%= @votes %></h3>
+  <form action="/questions/<%= @question.id %>/down_votes" method="post">
+    <input type="image" src='/images/grape-down-arrow.png' width="100">
+  </form>
   </div>
   <p id="question-body"><%=@question.body%></p>
   <!-- <img class="grapes downvote" src="/images/grape-down-arrow.png"> -->

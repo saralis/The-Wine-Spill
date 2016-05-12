@@ -2,11 +2,11 @@
 <% @question.answers.each do |answer| %>
   <ul>
     <form action="/answers/<%= answer.id %>/up_votes" method="post">
-      <input type="submit" value="Upvote">
+      <input type="image" src='/images/grape-up-arrow.png' width="50">
     </form>
       <h3><%= answer.votes.sum(:count) %></h3>
     <form action="/answers/<%= answer.id %>/down_votes" method="post">
-      <input type="submit" value="Downvote">
+      <input type="image" src='/images/grape-down-arrow.png' width="50">
     </form>
     <% find_user_id = answer.user_id %>
     <%= User.find_by(id: find_user_id).username %> answered:
