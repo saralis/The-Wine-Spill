@@ -51,3 +51,7 @@ $(document).ready(function() {
   });
 
 });
+
+
+// AJAX for votes
+
