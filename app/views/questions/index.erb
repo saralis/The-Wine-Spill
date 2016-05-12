@@ -1,10 +1,11 @@
-<h1 id="question-header">Questions</h1>
-<%if logged_in?%>
-  <a href="/questions/new">Ask a question.</a>
-<%end%>
-<ul id="question-list">
-  <%@questions.each do |question|%>
-    <li><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
+<div id="question-container">
+  <h1 id="question-header">Questions</h1>
+  <%if logged_in?%>
+    <a href="/questions/new">Ask a question.</a>
   <%end%>
-</ul>
-
+  <ul id="question-list">
+    <%@questions.each do |question|%>
+      <li><h4><a href="/questions/<%=question.id%>"><%=question.title%></a></h4></li>
+    <%end%>
+  </ul>
+</div>
