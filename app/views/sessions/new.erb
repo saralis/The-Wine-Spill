@@ -4,7 +4,11 @@
 <div id="login-form">
 
   <%if @errors%>
-    <%= erb :'_errors'%>
+    <%= @errors.each do |message| %>
+    <ul>
+        <li><%= message %></li>
+    </ul>
+    <% end %> 
   <%end%>
 
   <table class="table">
