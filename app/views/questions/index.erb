@@ -8,9 +8,5 @@
   <%if logged_in?%>
     <a href="/questions/new">Ask a question.</a>
   <%end%>
-  <ul id="question-list">
-    <%@questions.each do |question|%>
-      <li><h4><a href="/questions/<%=question.id%>"><%=question.title%></a></h4></li>
-    <%end%>
-  </ul>
+  <%= erb :'questions/_feed'%>
 </div>
