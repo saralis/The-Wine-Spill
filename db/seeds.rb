@@ -1,7 +1,6 @@
 #users
 User.create(username: 'test', email: 'test@test.com', password: 'test')
 User.create(username: 'test2', email: 'test2@test2.com', password: 'test2')
-User.create(username: 'test2', email: 'test2@test2.com', password: 'test2')
 User.create(username: 'test3', email: 'test3@test3.com', password: 'test3')
 User.create(username: 'test4', email: 'test4@test4.com', password: 'test4')
 User.create(username: 'test5', email: 'test5@test5.com', password: 'test5')

@@ -1,6 +1,6 @@
 <form action="/questions/<%=@question.id%>" method="post"> <!--Edit Form -->
   <input type="hidden" name="_method" value="put">
-  <input type="text" name="questions[title]" placeholder="Title">
-  <input type="text" name="questions[body]" placeholder="Body">
+  <input type="text" name="question[title]" placeholder="Title">
+  <input type="text" name="question[body]" placeholder="Body">
   <input type="submit" value="Edit Your Question">
 </form>

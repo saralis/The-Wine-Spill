@@ -2,7 +2,7 @@
 <p><%=@question.body%></p>
 <p>Views: <%=@question.view_count%></p>
 <p>User: <%=@user.username%></p>
-<% if same_user(@question.user_id) %>
+<% if same_user(@question.user) %>
   <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Your Question">
@@ -11,3 +11,10 @@
 <% end %>
 
 
+<!-- code not working -->
+<br>
+Comment:
+<form method="post" action="/questions/:question_id/comments">
+  <input name="comment[body]" type="text" placeholder="Body">
+  <input type="submit" value="Create">
+</form>

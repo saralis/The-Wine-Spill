@@ -1,8 +1,30 @@
+body {
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/grapevine.jpg");
+  background-size: cover;
+}
+
 .container {
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+}
+
+#question-container{
+  position: relative;
+  width: 55%;
+  margin: 0 auto ;
+  background-color: #85274e;
+  border-radius: 20px;
+}
+
+#homelink {
+  text-decoration: none;
+  color: green;
+}
+
+h1 {
+  margin-top: 0px
 }
 
 th {
@@ -11,6 +33,8 @@ th {
 
 header {
   text-align: center;
+  background-color: #8C001A;
+  border-radius: 0px 0px 10px 10px;
 }
 
 #nav-bar {
@@ -20,6 +44,7 @@ header {
 
 .header-links {
   display: inline-block;
+  color: black ;
 }
 
 #question-header {
@@ -28,8 +53,18 @@ header {
 }
 
 #question-list {
-  text-align: center;
+  text-align: left;
   list-style: none;
-  padding-left: 0px;
-
+  padding: 20px;
 }
+
+#question-link {
+  text-align: left;
+}
+
+.question-body {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+

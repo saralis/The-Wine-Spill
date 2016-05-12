@@ -6,7 +6,7 @@ post '/questions/:question_id/comments' do
 end
 
 put '/questions/:question_id/comments/:id' do
-  require_same_user(current_user.id)
+  require_same_user(current_user)
   @question = Question.find(params[:question_id])
   @comment = @question.comments.find(params[:id])
   @comment.update_attributes(params[:comment])
@@ -15,7 +15,7 @@ end
 
 
 delete '/questions/:question_id/comments/:id' do
-  require_same_user(current_user.id)
+  require_same_user(current_user)
   @question = Question.find(params[:question_id])
   @comment = @question.comments.find(params[:id])
   @comment.destroy
@@ -30,7 +30,7 @@ post '/answers/:answer_id/comments' do
 end
 
 put '/answers/:answer_id/comments/:id' do
-  require_same_user(current_user.id)
+  require_same_user(current_user)
   @answer = Answer.find(params[:answer_id])
   @comment = @answer.comments.find(params[:id])
   @comment.update_attributes(params[:comment])
@@ -38,7 +38,7 @@ put '/answers/:answer_id/comments/:id' do
 end
 
 delete '/answers/:answer_id/comments/:id' do
-  require_same_user(current_user.id)
+  require_same_user(current_user)
   @answer = Answer.find(params[:answer_id])
   @comment = @answer.comments.find(params[:id])
   @comment.destroy

@@ -31,7 +31,7 @@ end
 
 
 get '/questions/:id/edit' do
-  require_same_user(current_user.id)
+  require_same_user(current_user)
   @question = Question.find(params[:id]) #define intstance variable for view
   erb :'questions/edit' #show edit question view
 
