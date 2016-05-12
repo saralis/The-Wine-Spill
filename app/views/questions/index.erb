@@ -1,8 +1,8 @@
-<h1>Questions:</h1>
+<h1 id="question-header">Questions</h1>
 <%if logged_in?%>
   <a href="/questions/new">Ask a question.</a>
 <%end%>
-<ul>
+<ul id="question-list">
   <%@questions.each do |question|%>
     <li><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
   <%end%>

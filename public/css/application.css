@@ -4,6 +4,32 @@
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
+}
+
+header {
+  text-align: center;
+}
+
+#nav-bar {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.header-links {
+  display: inline-block;
+}
+
+#question-header {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#question-list {
+  text-align: center;
+  list-style: none;
+  padding-left: 0px;
+
 }
