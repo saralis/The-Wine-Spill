@@ -50,6 +50,7 @@ delete '/questions/:question_id/answers/:answers_id' do
   @question = Question.find_by(id: params[:question_id])
   same_user(@question.user)
   @answer = @question.answers.find_by(id: params[:id])
+  @answer.comments.each{|comment| comment.destroy}
   @answer.destroy
   redirect "/questions/#{questions.id}"
 end
