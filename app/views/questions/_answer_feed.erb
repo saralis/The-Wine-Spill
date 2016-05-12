@@ -18,15 +18,15 @@
         </li>
       <%end%>
     </ul>
+    <% if logged_in? %>
+      <h4>Create an answer comment</h4>
+      <form method="post" action="/answers/<%=answer.id%>/comments">
+        <input name="comment[body]" type="text" placeholder="Body">
+        <input type="submit" value="Create">
+      </form>
+      <br>
+      <br>
+    <% end %>
   </ul>
-  <% if logged_in? %>
-        <h4>Create an answer comment</h4>
-        <form method="post" action="/answers/<%=answer.id%>/comments">
-          <input name="comment[body]" type="text" placeholder="Body">
-          <input type="submit" value="Create">
-        </form>
-        <br>
-        <br>
-  <% end %>
 <% end %>
 

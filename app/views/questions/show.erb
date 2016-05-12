@@ -1,17 +1,21 @@
 <section id="question-show">
   <h1><%=@question.title%></h1>
   <!-- <img class="grapes upvote" src="/images/grape-up-arrow.png"> -->
-  <form action="/questions/<%= @question.id %>/up_votes" method="post">
-  		<input type="submit" value="Upvote">
-  </form>
-  <h3><%= @votes %></h3>
-  <form action="/questions/<%= @question.id %>/down_votes" method="post">
-  		<input type="submit" value="Downvote">
-  </form>
+  <div class="vote-arrows">
+    <form action="/questions/<%= @question.id %>/up_votes" method="post">
+    		<input type="submit" value="Upvote">
+    </form>
+    <h3><%= @votes %></h3>
+    <form action="/questions/<%= @question.id %>/down_votes" method="post">
+    		<input type="submit" value="Downvote">
+    </form>
+  </div>
+  <p id="question-body"><%=@question.body%></p>
   <!-- <img class="grapes downvote" src="/images/grape-down-arrow.png"> -->
-  <p><%=@question.body%></p>
+  <div id="stats">
   <p>Views: <%=@question.view_count%></p>
-  <p>User: <%=@user.username%></p>
+  <p>Posted By: <%=@user.username%></p>
+  </div>
   <% if same_user(@question.user) %>
     <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
       <input type="hidden" name="_method" value="delete">
@@ -26,11 +30,10 @@
   <% end %>
 
   <%= erb :"questions/_tag_feed"%>
+  <div id="question-comments">
+    <h4>Question Comments</h4>
 
-  <h4>Question Comments</h4>
-
-  <%= erb :"questions/_comment_feed"%>
-
+    <%= erb :"questions/_comment_feed"%>
   <br>
 
   <% if logged_in? %>
@@ -41,6 +44,7 @@
     </form>
 
   <% end %>
+  </div>
 
 
   <!--List of all answers-->
