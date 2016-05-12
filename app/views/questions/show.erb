@@ -1,4 +1,13 @@
 <h1><%=@question.title%></h1>
+<!-- <img class="grapes upvote" src="/images/grape-up-arrow.png"> -->
+<form action="/questions/<%= @question.id %>/up_votes" method="post">
+		<input type="submit" value="Upvote">
+</form>
+<h3><%= @votes %></h3>
+<form action="/questions/<%= @question.id %>/down_votes" method="post">
+		<input type="submit" value="Downvote">
+</form>
+<!-- <img class="grapes downvote" src="/images/grape-down-arrow.png"> -->
 <p><%=@question.body%></p>
 <p>Views: <%=@question.view_count%></p>
 <p>User: <%=@user.username%></p>

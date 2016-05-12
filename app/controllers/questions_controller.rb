@@ -23,15 +23,34 @@ end
 get '/questions/:id' do
   @question = Question.find(params[:id]) #define instance variable for view
   @question.view_count += 1 #Increment view count
+  @votes = @question.votes.sum(:count)
   @question.save
-  @votes = @question.votes.count
-  @up_vote = @votes += 1
-  @down_vote = @votes -= 1
   @user = @question.user
   erb :'questions/show' #show single question view
 
 end
 
+post '/questions/:id/up_votes' do
+  # binding.pry
+  @question = Question.find_by( id: params[:id])
+  @up_vote = @question.votes.new(count: + 1, user_id: current_user.id)
+  if @up_vote.save
+    redirect "/questions/#{@question.id}"
+  else
+    erb :'/question/show'
+  end   
+end
+
+post '/questions/:id/down_votes' do
+  # binding.pry
+  @question = Question.find_by( id: params[:id])
+  @down_vote = @question.votes.new(count: - 1, user_id: current_user.id)
+  if @down_vote.save
+    redirect "/questions/#{@question.id}"
+  else
+    erb :'/question/show'
+  end   
+end
 
 get '/questions/:id/edit' do
   require_same_user(current_user)
