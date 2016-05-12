@@ -7,10 +7,7 @@
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Your Question">
   </form>
-  <form action="/questions/<%=@question.id%>" method="post"> <!--Edit Form -->
-    <input type="hidden" name="_method" value="put">
-    <input type="submit" value="Edit Your Question">
-  </form>
+  <a href="/questions/<%=@question.id%>/edit">Edit this question.</a>
 <% end %>
 
 
