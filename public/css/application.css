@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/grapevine.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/grapevine.jpg");
   background-size: cover;
 }
 
@@ -96,7 +96,47 @@ header {
   display: block;
 }
 
+#delete-user-form {
+  margin-left: 40%;
+  text-align: center;
+  background-color: #85274e;
+  display: inline-block;
+  border-bottom: 3px  solid black;
+  border-right: 3px  solid black;
+  border-radius: 10px 10px 10px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#delete-user-form ul{
+  list-style: none;
+  padding-left: 0px;
+}
 
+#primary-aside {
+  float: right;
+  background-color: #360000;
+  margin-top: 30px;
+  margin-right: 1%;
+  width: 17%;
+  height: 700px;
+  border-bottom: 3px  solid black;
+  border-right: 3px  solid black;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.aside-underline {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.rose {
+  color: #ee7272;
+
+}
+
+#section-one a{
+  text-decoration: none;
+}
 
 
 

@@ -1,0 +1,8 @@
+<h4>Tags</h4>
+<ul>
+<%@question.tags.each do |tag|%>
+  <li><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
+<%end%>
+</ul>
+<br>
+<br>

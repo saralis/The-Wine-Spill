@@ -9,9 +9,7 @@ post '/login' do
     session[:user_id] = user.id #Assign the user a session
     redirect '/questions' #Redirect to the home page
   else
-
     @errors = ["Incorrect username or password."]
-
     erb :'sessions/new' # And rerender the login form
   end
 end
