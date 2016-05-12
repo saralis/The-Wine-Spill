@@ -28,25 +28,27 @@ end
 
 # Answers
 post '/answers/:answer_id/comments' do
+  require_user
   @answer = Answer.find(params[:answer_id])
+  params[:comment][:answer_id] = current_user.id
   @comment = @answer.comments.new(params[:comment])
   @comment.save
-  redirect "/answers/#{@answer.id}"
+  redirect "/questions/#{@question.id}"
 end
 
 # Edit answer
-put '/answers/:answer_id/comments/:id' do
-  require_same_user(current_user)
-  @answer = Answer.find(params[:answer_id])
-  @comment = @answer.comments.find(params[:id])
-  @comment.update_attributes(params[:comment])
-  redirect "/answers/#{@answer.id}"
-end
+# put '/answers/:answer_id/comments/:id' do
+#   require_same_user(current_user)
+#   @answer = Answer.find(params[:answer_id])
+#   @comment = @answer.comments.find(params[:id])
+#   @comment.update_attributes(params[:comment])
+#   redirect "/answers/#{@answer.id}"
+# end
 
 delete '/answers/:answer_id/comments/:id' do
   require_same_user(current_user)
   @answer = Answer.find(params[:answer_id])
   @comment = @answer.comments.find(params[:id])
   @comment.destroy
-  redirect "/answers/#{@answer.id}"
+  redirect "/questions/#{@question.id}"
 end

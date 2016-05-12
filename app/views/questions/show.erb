@@ -25,7 +25,7 @@
 
 <br>
 <br>
-<h4>Comments</h4>
+<h4>Question Comments</h4>
 <ul>
   <%@question.comments.each do |comment|%>
     <li>
@@ -40,11 +40,11 @@
   <%end%>
 </ul>
 
-<!-- code not working -->
+
 <br>
 
 <% if logged_in? %>
-  <h4>Create a comment</h4>
+  <h4>Create a  question comment</h4>
   <form method="post" action="/questions/<%=@question.id%>/comments">
     <input name="comment[body]" type="text" placeholder="Body">
     <input type="submit" value="Create">
@@ -52,13 +52,9 @@
 
 <% end %>
 
-Comment:
-<form method="post" action="/questions/:question_id/comments">
-  <input name="comment[body]" type="text" placeholder="Body">
-  <input type="submit" value="Create">
-</form>
 
 <!--List of all answers-->
+<br>
 </br>
 <% @question.answers.each do |answer| %>
   <ul>
@@ -66,6 +62,19 @@ Comment:
     <%= User.find_by(id: find_user_id).username %> answered:
     </br>
     <%=answer.body%>
+    <ul>
+      <%@answer.comments.each do |comment|%>
+        <li>
+          <%=comment.body%>
+          <% if same_user(comment.user) %>
+            <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete Comment">
+            </form>
+          <% end %>
+        </li>
+      <%end%>
+    </ul>
   </ul>
 <% end %>
 </br>
