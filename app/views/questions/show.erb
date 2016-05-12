@@ -53,7 +53,7 @@
   <!-- Answer form -->
   </br>
   Your Answer:
-  <form method="post" action="/questions/<%=@question.id%>/answers">
+  <form id="answer-form" method="post" action="/questions/<%=@question.id%>/answers">
     <input name="answer[body]" type="text" placeholder="Body">
     <input type="submit" value="Answer">
   </form>
