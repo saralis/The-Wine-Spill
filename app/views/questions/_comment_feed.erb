@@ -1,0 +1,13 @@
+<ul>
+  <%@question.comments.each do |comment|%>
+    <li>
+      <%=comment.body%>
+      <% if same_user(comment.user) %>
+        <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete Comment">
+        </form>
+      <% end %>
+    </li>
+  <%end%>
+</ul>

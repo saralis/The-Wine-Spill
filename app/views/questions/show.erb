@@ -1,100 +1,58 @@
-<h1><%=@question.title%></h1>
-<!-- <img class="grapes upvote" src="/images/grape-up-arrow.png"> -->
-<form action="/questions/<%= @question.id %>/up_votes" method="post">
-		<input type="submit" value="Upvote">
-</form>
-<h3><%= @votes %></h3>
-<form action="/questions/<%= @question.id %>/down_votes" method="post">
-		<input type="submit" value="Downvote">
-</form>
-<!-- <img class="grapes downvote" src="/images/grape-down-arrow.png"> -->
-<p><%=@question.body%></p>
-<p>Views: <%=@question.view_count%></p>
-<p>User: <%=@user.username%></p>
-<% if same_user(@question.user) %>
-  <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Your Question">
+<section id="question-show">
+  <h1><%=@question.title%></h1>
+  <!-- <img class="grapes upvote" src="/images/grape-up-arrow.png"> -->
+  <form action="/questions/<%= @question.id %>/up_votes" method="post">
+  		<input type="submit" value="Upvote">
   </form>
-  <a href="/questions/<%=@question.id%>/edit">Edit this question.</a>
-  <form action="/tags" method="post"> <!-- Add new tag -->
-    <input type="hidden" name="question_id" value="<%=@question.id%>">
-    <input type="text" name="tag[name]" placeholder="Tag">
-    <input type="submit" value="Add tag">
+  <h3><%= @votes %></h3>
+  <form action="/questions/<%= @question.id %>/down_votes" method="post">
+  		<input type="submit" value="Downvote">
   </form>
-<% end %>
+  <!-- <img class="grapes downvote" src="/images/grape-down-arrow.png"> -->
+  <p><%=@question.body%></p>
+  <p>Views: <%=@question.view_count%></p>
+  <p>User: <%=@user.username%></p>
+  <% if same_user(@question.user) %>
+    <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Your Question">
+    </form>
+    <a href="/questions/<%=@question.id%>/edit">Edit this question.</a>
+    <form action="/tags" method="post"> <!-- Add new tag -->
+      <input type="hidden" name="question_id" value="<%=@question.id%>">
+      <input type="text" name="tag[name]" placeholder="Tag">
+      <input type="submit" value="Add tag">
+    </form>
+  <% end %>
+
+  <%= erb :"questions/_tag_feed"%>
+
+  <h4>Question Comments</h4>
+
+  <%= erb :"questions/_comment_feed"%>
+
+  <br>
+
+  <% if logged_in? %>
+    <h4>Create a  question comment</h4>
+    <form method="post" action="/questions/<%=@question.id%>/comments">
+      <input name="comment[body]" type="text" placeholder="Body">
+      <input type="submit" value="Create">
+    </form>
+
+  <% end %>
 
 
-<h4>Tags</h4>
-<ul>
-  <%@question.tags.each do |tag|%>
-    <li><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
-  <%end%>
-</ul>
+  <!--List of all answers-->
+  <%= erb :"questions/_answer_feed"%>
 
-<br>
-<br>
-<h4>Question Comments</h4>
-<ul>
-  <%@question.comments.each do |comment|%>
-    <li>
-      <%=comment.body%>
-      <% if same_user(comment.user) %>
-        <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Delete Comment">
-        </form>
-      <% end %>
-    </li>
-  <%end%>
-</ul>
-
-
-<br>
-
-<% if logged_in? %>
-  <h4>Create a  question comment</h4>
-  <form method="post" action="/questions/<%=@question.id%>/comments">
-    <input name="comment[body]" type="text" placeholder="Body">
-    <input type="submit" value="Create">
+  <!-- Answer form -->
+  </br>
+  Your Answer:
+  <form method="post" action="/questions/<%=@question.id%>/answers">
+    <input name="answer[body]" type="text" placeholder="Body">
+    <input type="submit" value="Answer">
   </form>
-
-<% end %>
-
-
-<!--List of all answers-->
-<br>
-</br>
-<% @question.answers.each do |answer| %>
-  <ul>
-    <% find_user_id = answer.user_id %>
-    <%= User.find_by(id: find_user_id).username %> answered:
-    </br>
-    <%=answer.body%>
-    <ul>
-      <%@answer.comments.each do |comment|%>
-        <li>
-          <%=comment.body%>
-          <% if same_user(comment.user) %>
-            <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
-              <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="Delete Comment">
-            </form>
-          <% end %>
-        </li>
-      <%end%>
-    </ul>
-  </ul>
-<% end %>
-</br>
-
-<!-- Answer form -->
-</br>
-Your Answer:
-<form method="post" action="/questions/<%=@question.id%>/answers">
-  <input name="answer[body]" type="text" placeholder="Body">
-  <input type="submit" value="Answer">
-</form>
-
+</section>
 
 
