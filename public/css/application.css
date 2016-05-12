@@ -11,9 +11,8 @@ body {
 }
 
 #question-container{
-  position: relative;
   width: 60%;
-  margin: 0 auto ;
+  margin-left: 15%;
   background-color: #85274e;
   border-bottom: 3px  solid black;
   border-right: 3px  solid black;
@@ -26,7 +25,12 @@ body {
 }
 
 h1 {
-  margin-top: 0px
+  margin-top: 0px;
+  font-family: Georgia;
+}
+
+#ask-question {
+  text-align: center;
 }
 
 th {
@@ -71,7 +75,7 @@ header {
 
 #tabs-container {
   display: inline;
-  margin-left: 20%;
+  margin-left: 15%;
 }
 
 .filter-tabs {
@@ -161,6 +165,10 @@ header {
   margin-top: 0px;
 }
 
+.tags {
+  display: inline-block;
+}
+
 #stats {
   display: inline-block;
 }
@@ -172,12 +180,22 @@ header {
 
 #question-comments {
   position: relative;
+  padding: 10px;
   background-color: #ee7272;
   margin-left: 20px;
   display: inline-block;
   width: 80%;
+  border-bottom: 3px  solid black;
+  border-right: 3px  solid black;
+  border-radius: 10px 10px 10px 10px;
 }
 
+
+#question-comments ul {
+  list-style: none;
+  padding-left: 0px;
+  text-align: center;
+}
 
 
 

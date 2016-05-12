@@ -19,7 +19,7 @@
           <% if same_user(comment.user) %>
             <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
               <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="Delete Comment">
+              <input type="image" src="/images/delete-button.png" width="70">
             </form>
           <% end %>
         </li>
@@ -29,7 +29,7 @@
       <h4>Create an answer comment</h4>
       <form method="post" action="/answers/<%=answer.id%>/comments">
         <input name="comment[body]" type="text" placeholder="Body">
-        <input type="submit" value="Create">
+        <input type="image" src="/images/button.png" width="40">
       </form>
       <br>
       <br>

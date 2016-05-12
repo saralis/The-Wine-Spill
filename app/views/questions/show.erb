@@ -19,13 +19,13 @@
   <% if same_user(@question.user) %>
     <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete Your Question">
+      <input type="image" src="/images/delete-button.png" width="70">      
     </form>
     <a href="/questions/<%=@question.id%>/edit">Edit this question.</a>
     <form action="/tags" method="post"> <!-- Add new tag -->
       <input type="hidden" name="question_id" value="<%=@question.id%>">
       <input type="text" name="tag[name]" placeholder="Tag">
-      <input type="submit" value="Add tag">
+      <input type="image" src="/images/add-tag.png" width="70">
     </form>
   <% end %>
 
@@ -40,7 +40,7 @@
     <h4>Create a  question comment</h4>
     <form method="post" action="/questions/<%=@question.id%>/comments">
       <input name="comment[body]" type="text" placeholder="Body">
-      <input type="submit" value="Create">
+      <input type="image" src="/images/button.png" width="50">      
     </form>
 
   <% end %>
