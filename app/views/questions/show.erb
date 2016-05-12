@@ -14,7 +14,7 @@
   <!-- <img class="grapes downvote" src="/images/grape-down-arrow.png"> -->
   <div id="stats">
   <p>Views: <%=@question.view_count%></p>
-  <p>Posted By: <%=@user.username%></p>
+  <p>Posted By: <a href="/users/<%=@user.id%>"><%=@user.username%></a></p>
   </div>
   <% if same_user(@question.user) %>
     <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
