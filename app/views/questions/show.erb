@@ -8,8 +8,19 @@
     <input type="submit" value="Delete Your Question">
   </form>
   <a href="/questions/<%=@question.id%>/edit">Edit this question.</a>
+  <form action="/tags" method="post"> <!-- Add new tag -->
+    <input type="hidden" name="question_id" value="<%=@question.id%>">
+    <input type="text" name="tag[name]" placeholder="Tag">
+    <input type="submit" value="Add tag">
+  </form>
 <% end %>
 
+<h4>Tags</h4>
+<ul>
+  <%@question.tags.each do |tag|%>
+    <li><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
+  <%end%>
+</ul>
 
 <!-- code not working -->
 <br>
@@ -18,3 +29,5 @@ Comment:
   <input name="comment[body]" type="text" placeholder="Body">
   <input type="submit" value="Create">
 </form>
+
+
