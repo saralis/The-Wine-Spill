@@ -53,7 +53,8 @@ header {
   text-align: center;
 }
 
-#question-list {
+.question-list {
+  display: none;
   text-align: left;
   list-style: none;
   padding: 20px;
@@ -90,6 +91,12 @@ header {
   width: 5%;
   height: auto;
 }
+
+.show {
+  display: block;
+}
+
+
 
 
 

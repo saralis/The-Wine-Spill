@@ -1,5 +1,42 @@
-<ul id="question-list">
-  <%@questions.each do |question|%>
-    <li><h4><a href="/questions/<%=question.id%>"><%=question.title%></a></h4></li>
+<ul class="show question-list" id="view-sort">
+  <%Question.sort_by_view.each do |question|%>
+    <li>
+      <h4>
+        <a href="/questions/<%=question.id%>"><%=question.title%></a>
+        <br/>
+        <span>Answers: <%=question.answers.length%></span>
+        <span>Views: <%=question.view_count%></span>
+        <span>Votes: <%=question.vote_count%></span>
+      </h4>
+    </li>
+  <%end%>
+</ul>
+
+<ul class="question-list" id="vote-sort">
+  <%Question.sort_by_votes.each do |question|%>
+    <li>
+      <h4>
+        <a href="/questions/<%=question.id%>"><%=question.title%></a>
+        <br/>
+        <span>Answers: <%=question.answers.length%></span>
+        <span>Views: <%=question.view_count%></span>
+        <span>Votes: <%=question.vote_count%></span>
+      </h4>
+    </li>
+  <%end%>
+</ul>
+
+
+<ul class="question-list" id="recent-sort">
+  <%Question.most_recent.each do |question|%>
+    <li>
+      <h4>
+        <a href="/questions/<%=question.id%>"><%=question.title%></a>
+        <br/>
+        <span>Answers: <%=question.answers.length%></span>
+        <span>Views: <%=question.view_count%></span>
+        <span>Votes: <%=question.vote_count%></span>
+      </h4>
+    </li>
   <%end%>
 </ul>
