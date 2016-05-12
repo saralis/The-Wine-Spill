@@ -32,7 +32,6 @@ get '/questions/:id' do
 end
 
 post '/questions/:id/up_votes' do
-  # binding.pry
   @question = Question.find_by( id: params[:id])
   @up_vote = @question.votes.new(count: + 1, user_id: current_user.id)
   if @up_vote.save
@@ -43,7 +42,6 @@ post '/questions/:id/up_votes' do
 end
 
 post '/questions/:id/down_votes' do
-  # binding.pry
   @question = Question.find_by( id: params[:id])
   @down_vote = @question.votes.new(count: - 1, user_id: current_user.id)
   if @down_vote.save
