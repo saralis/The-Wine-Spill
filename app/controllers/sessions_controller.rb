@@ -8,7 +8,6 @@ post '/login' do
     session[:user_id] = user.id #Assign the user a session
     redirect '/questions' #Redirect to the home page
   else
-    binding.pry
     @errors = user.errors.full_messages #Otherwise display errors
     erb :'sessions/new' # And rerender the login form
   end
