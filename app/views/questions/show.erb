@@ -72,7 +72,7 @@
     </br>
     <%=answer.body%>
     <ul>
-      <%@answer.comments.each do |comment|%>
+      <%answer.comments.each do |comment|%>
         <li>
           <%=comment.body%>
           <% if same_user(comment.user) %>
