@@ -39,7 +39,7 @@ post '/questions/:id/up_votes' do
     redirect "/questions/#{@question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 post '/questions/:id/down_votes' do
@@ -50,7 +50,7 @@ post '/questions/:id/down_votes' do
     redirect "/questions/#{@question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 get '/questions/:id/edit' do
@@ -67,7 +67,7 @@ post '/answers/:id/up_votes' do
     redirect "/questions/#{@answer.question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 post '/answers/:id/down_votes' do
@@ -79,7 +79,7 @@ post '/answers/:id/down_votes' do
     redirect "/questions/#{@answer.question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 
@@ -90,7 +90,7 @@ post '/comments/:id/up_votes' do
     redirect "/questions/#{@comment.question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 post '/comments/:id/down_votes' do
@@ -102,7 +102,7 @@ post '/comments/:id/down_votes' do
     redirect "/questions/#{@comment.question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 put '/questions/:id' do
@@ -119,6 +119,14 @@ end
 
 delete '/questions/:id' do
   @question = Question.find(params[:id]) #define question to delete
+  @question.tags.each{|tag| tag.destroy if tag.questions.length <= 1}
+  @question.question_tags{|question_tag| question_tag.destroy}
+  @question.votes.each{|vote| vote.destroy}
+  @question.answers.each do |answer|
+    answer.comments.each{|comment| comment.destroy}
+    answer.destroy
+  end
+  @question.comments.each{|comment| comment.destroy}
   @question.destroy #delete question
   redirect '/questions' #redirect back to questions index page
 end
