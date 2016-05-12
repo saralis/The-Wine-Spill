@@ -33,14 +33,14 @@ Comment.create(body: 'comment6', commentable_id: 3, commentable_type: 'Answer', 
 Comment.create(body: 'comment7', commentable_id: 4, commentable_type: 'Question', user_id: 4)
 
 #votes
-Vote.create(count: 1, users_id: 1, votable_id: 1, votable_type: 'Question')
-Vote.create(count: 2, users_id: 2, votable_id: 2, votable_type: 'Answer')
-Vote.create(count: 2, users_id: 3, votable_id: 2, votable_type: 'Question')
-Vote.create(count: 2, users_id: 4, votable_id: 2, votable_type: 'Answer')
-Vote.create(count: 3, users_id: 5, votable_id: 3, votable_type: 'Question')
-Vote.create(count: 3, users_id: 6, votable_id: 3, votable_type: 'Answer')
-Vote.create(count: 3, users_id: 3, votable_id: 3, votable_type: 'Question')
-Vote.create(count: 4, users_id: 4, votable_id: 4, votable_type: 'Answer')
+Vote.create(count: 1, user_id: 1, votable_id: 1, votable_type: 'Question')
+Vote.create(count: 2, user_id: 2, votable_id: 2, votable_type: 'Answer')
+Vote.create(count: 2, user_id: 3, votable_id: 2, votable_type: 'Question')
+Vote.create(count: 2, user_id: 4, votable_id: 2, votable_type: 'Answer')
+Vote.create(count: 3, user_id: 5, votable_id: 3, votable_type: 'Question')
+Vote.create(count: 3, user_id: 6, votable_id: 3, votable_type: 'Answer')
+Vote.create(count: 3, user_id: 3, votable_id: 3, votable_type: 'Question')
+Vote.create(count: 4, user_id: 4, votable_id: 4, votable_type: 'Answer')
 
 
 
