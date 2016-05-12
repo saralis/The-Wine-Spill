@@ -3,7 +3,11 @@
 
 <div id="registration-form">
   <%if @errors%>
-    <%= erb :'_errors'%>
+    <ul>
+      <%@errors.each do |error|%>
+        <li><%=error%></li>
+      <%end%>
+    </ul>
   <%end%>
   <table class="table">
     <form action="/users" method="POST">
