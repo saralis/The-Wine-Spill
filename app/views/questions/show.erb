@@ -53,18 +53,18 @@
 <br>
 
 <% if logged_in? %>
-  <h4>Create a  question comment</h4>
+  <h4>Create a question comment</h4>
   <form method="post" action="/questions/<%=@question.id%>/comments">
     <input name="comment[body]" type="text" placeholder="Body">
     <input type="submit" value="Create">
   </form>
-
 <% end %>
 
 
 <!--List of all answers-->
 <br>
 </br>
+
 <% @question.answers.each do |answer| %>
   <ul>
     <% find_user_id = answer.user_id %>
@@ -76,15 +76,28 @@
         <li>
           <%=comment.body%>
           <% if same_user(comment.user) %>
-            <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
+            <form action="/answers/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
               <input type="hidden" name="_method" value="delete">
               <input type="submit" value="Delete Comment">
             </form>
           <% end %>
+
+
+
         </li>
       <%end%>
     </ul>
+    <% if logged_in? %>
+      <h4>Create an answer comment</h4>
+      <form method="post" action="/answers/<%=answer.id%>/comments">
+        <input name="comment[body]" type="text" placeholder="Body">
+        <input type="submit" value="Create">
+      </form>
+      <br>
+      <br>
+    <% end %>
   </ul>
+
 <% end %>
 </br>
 
