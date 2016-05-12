@@ -1,7 +1,7 @@
 post '/tags' do
-  require_user
-
   params[:question_id] = params[:question_id].to_i
+
+  require_same_user(Question.find_by(id: params[:question_id]).user)
 
   #below works with properly formatted params in HTML form
   @tag = Tag.new(params[:tag]) #create new tag
