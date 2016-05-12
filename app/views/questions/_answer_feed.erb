@@ -1,6 +1,13 @@
 <br>
 <% @question.answers.each do |answer| %>
   <ul>
+      <form action="/answers/<%= answer.id %>/up_votes" method="post">
+      <input type="submit" value="Upvote">
+    </form>
+    <h3><%= answer.votes.sum(:count) %></h3>
+    <form action="/answers/<%= answer.id %>/down_votes" method="post">
+      <input type="submit" value="Downvote">
+    </form>
     <% find_user_id = answer.user_id %>
     <%= User.find_by(id: find_user_id).username %> answered:
     </br>
