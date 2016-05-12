@@ -2,8 +2,8 @@ post '/questions/:question_id/answers' do
   @question = Question.find_by(id: params[:question_id])
   params[:answer][:user_id] = current_user.id
   @answer = @question.answers.new(params[:answer])
-
   if @answer.save
+    @answer.votes.create(count: 0, user_id: current_user.id)
     redirect "/questions/#{@question.id}"
   else
     erb :'/questions'
