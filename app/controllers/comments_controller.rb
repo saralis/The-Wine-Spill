@@ -30,10 +30,10 @@ end
 post '/answers/:answer_id/comments' do
   require_user
   @answer = Answer.find(params[:answer_id])
-  params[:comment][:answer_id] = current_user.id
+  params[:comment][:user_id] = current_user.id
   @comment = @answer.comments.new(params[:comment])
   @comment.save
-  redirect "/questions/#{@question.id}"
+  redirect "/questions/#{@answer.question.id}"
 end
 
 # Edit answer
@@ -50,5 +50,5 @@ delete '/answers/:answer_id/comments/:id' do
   @answer = Answer.find(params[:answer_id])
   @comment = @answer.comments.find(params[:id])
   @comment.destroy
-  redirect "/questions/#{@question.id}"
+  redirect "/questions/#{@answer.question.id}"
 end
