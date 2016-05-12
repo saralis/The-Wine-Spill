@@ -19,7 +19,7 @@ post '/answers/:id/up_votes' do
     redirect "/questions/#{@question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 post '/questions/:id/down_votes' do
@@ -31,7 +31,7 @@ post '/questions/:id/down_votes' do
     redirect "/questions/#{@question.id}"
   else
     erb :'/question/show'
-  end   
+  end
 end
 
 put '/questions/:question_id/answers/:answers_id' do

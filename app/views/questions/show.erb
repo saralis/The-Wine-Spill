@@ -79,13 +79,15 @@ Comment:
 <% end %>
 </br>
 
+<% if logged_in? %>
 <!-- Answer form -->
 </br>
-Your Answer:
-<form method="post" action="/questions/<%=@question.id%>/answers">
-  <input name="answer[body]" type="text" placeholder="Body">
-  <input type="submit" value="Answer">
-</form>
+  Your Answer:
+  <form method="post" action="/questions/<%=@question.id%>/answers">
+    <input name="answer[body]" type="text" placeholder="Body">
+    <input type="submit" value="Answer">
+  </form>
+<% end %>
 
 
 
