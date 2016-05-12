@@ -138,6 +138,46 @@ header {
   text-decoration: none;
 }
 
+#question-show{
+  margin-left: 20%;
+  display: inline-block;
+  background-color: #85274e;
+  padding-left: 5%;
+  width: 50%;
+  border-bottom: 3px  solid black;
+  border-right: 3px  solid black;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.vote-arrows {
+  display: inline-block;
+  text-align: center;
+}
+
+#question-body {
+  display: inline-block;
+  width :40%;
+  position: absolute;
+  margin-top: 0px;
+}
+
+#stats {
+  display: inline-block;
+}
+
+#stats p {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+#question-comments {
+  position: relative;
+  background-color: #ee7272;
+  margin-left: 20px;
+  display: inline-block;
+  width: 80%;
+}
+
 
 
 
