@@ -22,7 +22,7 @@
     <%end%>
   </ul>
 
-  <% if same_user(@user.id) %>
+  <% if same_user(@user) %>
     <form action="/users/<%=@user.id%>" method="POST">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete Your Profile" >

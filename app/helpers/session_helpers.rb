@@ -10,10 +10,10 @@ def require_user
   redirect '/questions' unless logged_in? #Require a person to be logged in to do something
 end
 
-def require_same_user(user_id)
-  redirect '/questions' unless same_user(user_id) #Require a person to be logged in and the same user who did the action to do something
+def require_same_user(user)
+  redirect '/questions' unless same_user(user) #Require a person to be logged in and the same user who did the action to do something
 end
 
-def same_user(user_id)
-  logged_in? && user_id == session[:user_id]
+def same_user(user)
+  logged_in? && user.id == session[:user_id]
 end
