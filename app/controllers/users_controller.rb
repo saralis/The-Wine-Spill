@@ -19,7 +19,7 @@ get '/users/:id' do
 end
 
 delete '/users/:id' do
-  require_same_user
+  require_same_user(current_user.id)
   user = User.find_by(id: params[:id])
   user.destroy
   redirect '/questions'
