@@ -1,0 +1,7 @@
+<h1>Questions with tag "<%=@tag.name%>"</h1>
+
+<ul>
+  <%@tag.questions.each do |question|%>
+    <li><a href="/questions/<%=question.id%>"><%=question.name%></a></li>
+  <%end%>
+</ul>

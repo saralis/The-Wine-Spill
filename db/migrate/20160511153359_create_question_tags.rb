@@ -1,7 +1,7 @@
 class CreateQuestionTags < ActiveRecord::Migration
   def change
-    create_table :tags do |t|
-      t.references :question_id, :tag_id, null: false, index: true
+    create_table :question_tags do |t|
+      t.references :question, :tag, null: false, index: true
 
       t.timestamps null: false
     end
