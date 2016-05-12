@@ -55,8 +55,8 @@ $(document).ready(function() {
     var name = $("input[name='tag[name]']").val();
     var question_id = $("input[name='question_id']").val();
     $.ajax({
-      method: "POST",
-      url: '/tags',
+      method: $(e.target).attr('method'),
+      url: $(e.target).attr('action'),
       data: { tag : {name : name}, question_id : question_id}
     })
     .done(function(response){
