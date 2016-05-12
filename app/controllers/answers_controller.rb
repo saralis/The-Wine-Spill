@@ -11,7 +11,7 @@ post '/questions/:question_id/answers' do
 end
 
 put '/questions/:question_id/answers/:answers_id' do
-  @question = Question.find_by(question: params[:question_id])
+  @question = Question.find_by(id: params[:question_id])
   same_user(@question.user)
   @answer = @question.answers.find_by(id: params[:id])
   @answer.assign_attributes(params[:answer])
@@ -23,7 +23,7 @@ put '/questions/:question_id/answers/:answers_id' do
 end
 
 delete '/questions/:question_id/answers/:answers_id' do
-  @question = Question.find_by(question_id: params[:question_id])
+  @question = Question.find_by(id: params[:question_id])
   same_user(@question.user)
   @answer = @question.answers.find_by(id: params[:id])
   @answer.destroy
