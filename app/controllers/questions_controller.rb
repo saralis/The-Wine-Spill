@@ -24,6 +24,9 @@ get '/questions/:id' do
   @question = Question.find(params[:id]) #define instance variable for view
   @question.view_count += 1 #Increment view count
   @question.save
+  @votes = @question.votes.count
+  @up_vote = @votes += 1
+  @down_vote = @votes -= 1
   @user = @question.user
   erb :'questions/show' #show single question view
 
