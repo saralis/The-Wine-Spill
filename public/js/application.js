@@ -50,8 +50,20 @@ $(document).ready(function() {
 
   });
 
+  $('#add-tag').on("submit", function(e){
+    e.preventDefault();
+    var name = $("input[name='tag[name]']").val();
+    var question_id = $("input[name='question_id']").val();
+    $.ajax({
+      method: "POST",
+      url: '/tags',
+      data: { tag : {name : name}, question_id : question_id}
+    })
+    .done(function(response){
+      $('#tag-container').append(response);
+      $(e.target).find(":nth-child(2)").val("");
+    });
+  });
+
 });
-
-
-// AJAX for votes
 
