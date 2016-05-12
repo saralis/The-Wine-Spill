@@ -4,7 +4,12 @@ post '/tags' do
   require_same_user(Question.find_by(id: params[:question_id]).user)
 
   #below works with properly formatted params in HTML form
-  @tag = Tag.new(params[:tag]) #create new tag
+  found_tag = Tag.find_by(name: params[:tag][:name])
+  if found_tag
+    @tag = found_tag #create new tag
+  else
+    @tag = Tag.new(params[:tag]) #create new tag
+  end
 
   if @tag.save #saves new tag or returns false if unsuccessful
     question_tag_params = {question_id: params[:question_id], tag_id: @tag.id}
