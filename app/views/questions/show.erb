@@ -18,3 +18,25 @@ Comment:
   <input name="comment[body]" type="text" placeholder="Body">
   <input type="submit" value="Create">
 </form>
+
+<!--List of all answers-->
+</br>
+<% @question.answers.each do |answer| %>
+  <ul>
+    <% find_user_id = answer.user_id %>
+    <%= User.find_by(id: find_user_id).username %> answered:
+    </br>
+    <%=answer.body%>
+  </ul>
+<% end %>
+</br>
+
+<!-- Answer form -->
+</br>
+Your Answer:
+<form method="post" action="/questions/<%=@question.id%>/answers">
+  <input name="answer[body]" type="text" placeholder="Body">
+  <input type="submit" value="Answer">
+</form>
+
+
