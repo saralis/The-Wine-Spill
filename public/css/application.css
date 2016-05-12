@@ -12,10 +12,10 @@ body {
 
 #question-container{
   position: relative;
-  width: 55%;
+  width: 60%;
   margin: 0 auto ;
   background-color: #85274e;
-  border-radius: 20px;
+  border-radius: 0px 20px 20px 20px;
 }
 
 #homelink {
@@ -48,7 +48,6 @@ header {
 }
 
 #question-header {
-  margin-top: 30px;
   text-align: center;
 }
 
@@ -66,5 +65,27 @@ header {
   text-align: center;
   margin-bottom: 20px;
 }
+
+#tabs-container {
+  display: inline;
+  margin-left: 20%;
+}
+
+.filter-tabs {
+  display: inline-block;
+  border-right: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  background-color: #3c191d;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.active {
+  background-color: #85274e;
+}
+
+
+
+
 
 
