@@ -1,12 +1,12 @@
 <ul id="question-comments-list">
   <%@question.comments.sort_by{|comment| comment.created_at}.reverse.each do |comment|%>
     <li>
-        <form action="/comments/<%= comment.id %>/up_votes" method="post">
-          <input type="submit" value="Upvote">
+        <form id="comment-up" action="/comments/<%= comment.id %>/up_votes" method="post">
+          <input type="image" src="/images/grape-up-arrow.png" width="50">
         </form>
-        <h3><%= comment.votes.sum(:count) %></h3>
-        <form action="/comments/<%= comment.id %>/down_votes" method="post">
-          <input type="submit" value="Downvote">
+        <h3 id="comment-votes"><%= comment.votes.sum(:count) %></h3>
+        <form id="comment-down"action="/comments/<%= comment.id %>/down_votes" method="post">
+          <input type="image" src="/images/grape-down-arrow.png" width="50">
         </form>
       <p><%=comment.body%></p>
       <% if same_user(comment.user) %>

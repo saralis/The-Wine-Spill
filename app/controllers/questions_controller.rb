@@ -50,7 +50,11 @@ post '/questions/:id/down_votes' do
   @question = Question.find_by( id: params[:id])
   @down_vote = @question.votes.new(count: -1, user_id: current_user.id)
   if @down_vote.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      @question.votes.sum(:count).to_s
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     erb :'/question/show'
   end
@@ -67,7 +71,11 @@ post '/answers/:id/up_votes' do
   @answer = Answer.find_by( id: params[:id])
   @up_vote = @answer.votes.new(count: + 1, user_id: current_user.id)
   if @up_vote.save
-    redirect "/questions/#{@answer.question.id}"
+    if request.xhr?
+      @answer.votes.sum(:count).to_s
+    else
+      redirect "/questions/#{@answer.question.id}"
+    end
   else
     erb :'/question/show'
   end
@@ -79,7 +87,11 @@ post '/answers/:id/down_votes' do
   @answer = Answer.find_by( id: params[:id])
   @down_vote = @answer.votes.new(count: - 1, user_id: current_user.id)
   if @down_vote.save
-    redirect "/questions/#{@answer.question.id}"
+    if request.xhr?
+      @answer.votes.sum(:count).to_s
+    else
+      redirect "/questions/#{@answer.question.id}"
+    end
   else
     erb :'/question/show'
   end

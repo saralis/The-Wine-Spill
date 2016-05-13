@@ -48,24 +48,89 @@ $(document).ready(function() {
   });
 // AJAX for votes
 
-  // $('#question-up').on('submit', function(event){
-  //   event.preventDefault();
+// question up votes
+  $('#question-up').on('submit', function(event){
+    event.preventDefault();
 
-  //   $target = $(event.target);
+    $target = $(event.target);
 
-  //   $.ajax({
-  //     url: $target.attr('action'),
-  //     type: $target.attr('method'),
-  //     // dataType: 'json'
-  //   }).done(function(response){
-  //     $('#question-votes').html(response);
-  //   });
-  // });
+    $.ajax({
+      url: $target.attr('action'),
+      type: $target.attr('method'),
+    }).done(function(response){
+      $('#question-votes').html(response);
+    });
+  });
 
+// question down votes
+  $('#question-down').on('submit', function(event){
+    event.preventDefault();
 
+    $target = $(event.target);
 
+    $.ajax({
+      url: $target.attr('action'),
+      type: $target.attr('method'),
+    }).done(function(response){
+      $('#question-votes').html(response);
+    });
+  });
 
+// comment up votes
+  $('#comment-up').on('submit', function(event){
+    event.preventDefault();
 
+    $target = $(event.target);
+
+    $.ajax({
+      url: $target.attr('action'),
+      type: $target.attr('method'),
+    }).done(function(response){
+      $('#comment-votes').html(response);
+    });
+  });
+
+// comment down votes
+  $('#comment-down').on('submit', function(event){
+    event.preventDefault();
+
+    $target = $(event.target);
+
+    $.ajax({
+      url: $target.attr('action'),
+      type: $target.attr('method'),
+    }).done(function(response){
+      $('#comment-votes').html(response);
+    });
+  });
+
+// answer up votes
+  $('#vote-up').on('submit', function(event){
+    event.preventDefault();
+
+    $target = $(event.target);
+
+    $.ajax({
+      url: $target.attr('action'),
+      type: $target.attr('method'),
+    }).done(function(response){
+      $('#answer-votes').html(response);
+    });
+  });
+
+// answer down votes
+  $('#vote-down').on('submit', function(event){
+    event.preventDefault();
+
+    $target = $(event.target);
+
+    $.ajax({
+      url: $target.attr('action'),
+      type: $target.attr('method'),
+    }).done(function(response){
+      $('#answer-votes').html(response);
+    });
+  });
 
 
 
