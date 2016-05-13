@@ -1,7 +1,8 @@
 <br>
+<ul id="answers-list">
 <% @question.answers.each do |answer| %>
   <ul>
-    <form action="/answers/<%= answer.id %>/up_votes" method="post">
+    <form id="vote-up" action="/answers/<%= answer.id %>/up_votes" method="post">
       <input type="image" src='/images/grape-up-arrow.png' width="50">
     </form>
       <h3><%= answer.votes.sum(:count) %></h3>
@@ -12,6 +13,12 @@
     <%= User.find_by(id: find_user_id).username %> answered:
     </br>
     <%=answer.body%>
+     <% if same_user(answer.user) %>
+            <form action="/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post"> <!--Delete Form -->
+              <input type="hidden" name="_method" value="delete">
+              <input type="image" src="/images/delete-button.png" width="55">
+            </form>
+    <% end %>
     <ul>
       <%answer.comments.each do |comment|%>
         <li>
@@ -36,4 +43,5 @@
     <% end %>
   </ul>
 <% end %>
+</ul>
 
