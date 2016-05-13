@@ -50,11 +50,23 @@ $(document).ready(function() {
 
   });
 
-
-
-// AJAX for votes
+  $('#add-tag').on("submit", function(e){
+    e.preventDefault();
+    var name = $("input[name='tag[name]']").val();
+    var question_id = $("input[name='question_id']").val();
+    $.ajax({
+      method: $(e.target).attr('method'),
+      url: $(e.target).attr('action'),
+      data: { tag : {name : name}, question_id : question_id}
+    })
+    .done(function(response){
+      $('#tag-container').append(response);
+      $(e.target).find(":nth-child(2)").val("");
+    });
+  });
 
 // AJAX for comments
+// Deleting Comments
   $('#question-comments-list').on('submit', '.delete-button', function(event) {
     event.preventDefault();
     var $target = $(event.target);

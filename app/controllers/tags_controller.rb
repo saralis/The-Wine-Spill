@@ -1,6 +1,6 @@
 post '/tags' do
   params[:question_id] = params[:question_id].to_i
-
+# binding.pry
   require_same_user(Question.find_by(id: params[:question_id]).user)
 
   #below works with properly formatted params in HTML form
@@ -11,12 +11,15 @@ post '/tags' do
     @tag = Tag.new(params[:tag]) #create new tag
   end
 
-  if @tag.save #saves new tag or returns false if unsuccessful
-    question_tag_params = {question_id: params[:question_id], tag_id: @tag.id}
-    QuestionTag.create(question_tag_params)
-    redirect "/questions/#{params[:question_id]}" #redirect back to tags index page
+  @tag.save #saves new tag or returns false if unsuccessful
+
+  question_tag_params = {question_id: params[:question_id], tag_id: @tag.id}
+  QuestionTag.create(question_tag_params)
+
+  if request.xhr?
+    "<li class=\"tags\"><a href=\"/tags/#{@tag.id}\">#{@tag.name}</a></li>"
   else
-    erb :'tags/new' # show new tags view again(potentially displaying errors)
+    redirect "/questions/#{params[:question_id]}" #redirect back to tags index page
   end
 
 end

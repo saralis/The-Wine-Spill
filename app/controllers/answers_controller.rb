@@ -23,7 +23,6 @@ post '/answers/:id/up_votes' do
 end
 
 post '/questions/:id/down_votes' do
-  # binding.pry
   @question = Question.find_by( id: params[:id])
   @answer = Answer.find_by( id: params[:id])
   @down_vote = @answer.votes.new(count: - 1, user_id: current_user.id)

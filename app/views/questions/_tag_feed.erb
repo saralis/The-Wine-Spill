@@ -1,5 +1,7 @@
-<h4>Tags</h4>
-<ul>
+<%if @question.tags.length > 0%>
+  <h4>Tags</h4>
+<%end%>
+<ul id="tag-container">
 <%@question.tags.each do |tag|%>
   <li class="tags"><a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
 <%end%>

@@ -14,7 +14,7 @@
   <!-- <img class="grapes downvote" src="/images/grape-down-arrow.png"> -->
   <div id="stats">
   <p>Views: <%=@question.view_count%></p>
-  <p>Posted By: <%=@user.username%></p>
+  <p>Posted By: <a href="/users/<%=@user.id%>"><%=@user.username%></a></p>
   </div>
   <% if same_user(@question.user) %>
     <form action="/questions/<%=@question.id%>" method="post"> <!--Delete Form -->
@@ -22,7 +22,7 @@
       <input type="image" src="/images/delete-button.png" width="70">
     </form>
     <a href="/questions/<%=@question.id%>/edit">Edit this question.</a>
-    <form action="/tags" method="post"> <!-- Add new tag -->
+    <form action="/tags" method="post" id="add-tag"> <!-- Add new tag -->
       <input type="hidden" name="question_id" value="<%=@question.id%>">
       <input type="text" name="tag[name]" placeholder="Tag">
       <input type="image" src="/images/add-tag.png" width="70">
