@@ -13,7 +13,7 @@
 //     });
 
 //     ajaxRequest.done(function(response){
-//       $("#answers-list")(response);
+//       $("#answers-list").closest(response);
 //     });
 
 //   });
