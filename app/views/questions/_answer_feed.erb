@@ -1,4 +1,5 @@
 <br>
+<ul id="answers-list">
 <% @question.answers.each do |answer| %>
   <ul>
     <form action="/answers/<%= answer.id %>/up_votes" method="post">
@@ -12,6 +13,12 @@
     <%= User.find_by(id: find_user_id).username %> answered:
     </br>
     <%=answer.body%>
+     <% if same_user(answer.user) %>
+            <form action="/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post"> <!--Delete Form -->
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete Answer">
+            </form>
+    <% end %>
     <ul>
       <%answer.comments.each do |comment|%>
         <li>
@@ -36,4 +43,5 @@
     <% end %>
   </ul>
 <% end %>
+</ul>
 
