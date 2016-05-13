@@ -21,7 +21,11 @@ post '/comments/:id/up_votes' do
   @question = Question.find_by(params[:question_id])
   @up_vote = @comment.votes.new(count: + 1, user_id: current_user.id)
   if @up_vote.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      @comment.votes.sum(:count).to_s
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     erb :'/question/show'
   end
@@ -33,7 +37,11 @@ post '/comments/:id/down_votes' do
   # binding.pry
   @down_vote = @comment.votes.new(count: - 1, user_id: current_user.id)
   if @down_vote.save
-    redirect "/questions/#{@question.id}"
+    if request.xhr?
+      @comment.votes.sum(:count).to_s
+    else
+      redirect "/questions/#{@question.id}"
+    end
   else
     erb :'/question/show'
   end

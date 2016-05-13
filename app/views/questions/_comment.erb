@@ -1,9 +1,9 @@
 <li>
-  <form action="/comments/<%= comment.id %>/up_votes" method="post">
+  <form id="comment-up" action="/comments/<%= comment.id %>/up_votes" method="post">
     <input type="submit" value="Upvote">
   </form>
-  <h3><%= comment.votes.sum(:count) %></h3>
-  <form action="/comments/<%= comment.id %>/down_votes" method="post">
+  <h3 id="comment-votes"><%= comment.votes.sum(:count) %></h3>
+  <form id="comment-down" action="/comments/<%= comment.id %>/down_votes" method="post">
     <input type="submit" value="Downvote">
   </form>
 <p><%=comment.body%></p>
