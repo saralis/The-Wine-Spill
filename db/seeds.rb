@@ -8,6 +8,7 @@ User.create(username: 'saralis', email: 'saralis@awesome.com', password: 'passwo
 #Question
 Question.create(title: "Vertical Tasting" , body: 'What is it?', view_count: 0, user_id: 1)
 Question.create(title: 'Sommelier', body: 'What is a sommelier', view_count: 0, user_id: 1)
+Question.create(title: 'Largest consumption of wine per capita', body: 'Where could you find the largest consumption of wine per capita in the world? ', view_count: 0, user_id: 1)
 
 #Answer
 Answer.create(body: 'Answer1', user_id: 1, question_id: 1)
