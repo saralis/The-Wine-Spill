@@ -1,0 +1,17 @@
+<li>
+  <form action="/comments/<%= comment.id %>/up_votes" method="post">
+    <input type="submit" value="Upvote">
+  </form>
+  <h3><%= comment.votes.sum(:count) %></h3>
+  <form action="/comments/<%= comment.id %>/down_votes" method="post">
+    <input type="submit" value="Downvote">
+  </form>
+<p><%=comment.body%></p>
+<% if same_user(comment.user) %>
+  <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post" class="delete-button"> <!--Delete Form -->
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Comment">
+  </form>
+<% end %>
+<hr>
+</li>

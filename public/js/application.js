@@ -82,6 +82,9 @@ $(document).ready(function() {
     });
   });
 
+  var $foop = "<li><form action=\"/comments/<%= comment.id %>/up_votes\"method=\"post\">    <input type=\"submit\" value=\"Upvote\">  </form>  <h3>0</h3>  <form action=\"/comments/<%= comment.id %>/down_votes\"method=\"post\">    <input type=\"submit\" value=\"Downvote\">  </form><p>foop</p>"+/*<% if same_user(comment.user) %>*/"<form action=\"/questions/<%=@question.id%>/comments/%=comment.id%>\" method=\"post\" class=\"delete-button\">  <input type=\"hidden\" name=\"_method\" value=\"delete\">    <input type=\"submit\" value=\"Delete Comment\">  </form>"+/*<% end %>*/"<hr></li>";
+
+
   $('#question_comment_form').on('submit', function(event) {
     event.preventDefault();
     var $target = $(event.target);
@@ -95,8 +98,9 @@ $(document).ready(function() {
       data: $data
     });
     $request.done(function(response){
-    var $comment = $target.parent().find('#question-comments-list').find('li').first().clone();
-    //$comment.html(response)
+    var $comment = $foop;
+    $comment = $comment.replace('foop', response);
+    $('#question-comments-list').prepend($comment);
     });
   });
 
