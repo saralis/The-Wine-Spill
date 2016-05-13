@@ -1,4 +1,4 @@
-  <ul>
+  <ul id="question-comments-list">
     <%@question.comments.each do |comment|%>
       <li>
           <form action="/comments/<%= comment.id %>/up_votes" method="post">
@@ -10,7 +10,7 @@
           </form>
         <%=comment.body%>
         <% if same_user(comment.user) %>
-          <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post"> <!--Delete Form -->
+          <form action="/questions/<%=@question.id%>/comments/<%=comment.id%>" method="post" class="delete-button"> <!--Delete Form -->
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="Delete Comment">
           </form>

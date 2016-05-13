@@ -50,8 +50,42 @@ $(document).ready(function() {
 
   });
 
-});
 
 
 // AJAX for votes
 
+// AJAX for comments
+  $('#question-comments-list').on('submit', '.delete-button', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    var $url = $target.attr("action");
+    var $method = "delete";
+
+    var $request = $.ajax({
+      url: $url,
+      method: $method
+    });
+    $request.done(function(response){
+      $target.parent().remove();
+    });
+  });
+
+  $('#question_comment_form').on('submit', function(event) {
+    event.preventDefault();
+    var $target = $(event.target);
+    var $url = $target.attr("action");
+    var $method = $target.attr("method");
+    var $data = $target.serialize();
+
+    var $request = $.ajax({
+      url: $url,
+      method: $method,
+      data: $data
+    });
+    $request.done(function(response){
+    var $comment = $target.parent().find('#question-comments-list').find('li').first().clone();
+    //$comment.html(response)
+    });
+  });
+
+});
