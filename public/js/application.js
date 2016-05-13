@@ -48,19 +48,19 @@ $(document).ready(function() {
   });
 // AJAX for votes
 
-  $('#question-up').on('submit', function(event){
-    event.preventDefault();
+  // $('#question-up').on('submit', function(event){
+  //   event.preventDefault();
 
-    $target = $(event.target);
+  //   $target = $(event.target);
 
-    $.ajax({
-      url: $target.attr('action'),
-      type: $target.attr('method'),
-      // dataType: 'json'
-    }).done(function(response){
-      $('#question-votes').html(response);
-    });
-  });
+  //   $.ajax({
+  //     url: $target.attr('action'),
+  //     type: $target.attr('method'),
+  //     // dataType: 'json'
+  //   }).done(function(response){
+  //     $('#question-votes').html(response);
+  //   });
+  // });
 
 
 

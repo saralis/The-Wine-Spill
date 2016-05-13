@@ -86,28 +86,6 @@ post '/answers/:id/down_votes' do
 end
 
 
-post '/comments/:id/up_votes' do
-  @comment = Comment.find_by( id: params[:id])
-  @up_vote = @comment.votes.new(count: + 1, user_id: current_user.id)
-  if @up_vote.save
-    redirect "/questions/#{@comment.question.id}"
-  else
-    erb :'/question/show'
-  end
-end
-
-post '/comments/:id/down_votes' do
-  # binding.pry
-  @question = Question.find_by( id: params[:id])
-  @comment = Comment.find_by( id: params[:id])
-  @down_vote = @comment.votes.new(count: - 1, user_id: current_user.id)
-  if @down_vote.save
-    redirect "/questions/#{@comment.question.id}"
-  else
-    erb :'/question/show'
-  end
-end
-
 put '/questions/:id' do
   @question = Question.find(params[:id]) #define variable to edit
   @question.assign_attributes(params[:question]) #assign new attributes

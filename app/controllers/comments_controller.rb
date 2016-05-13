@@ -16,6 +16,29 @@ post '/questions/:question_id/comments' do
   end
 end
 
+post '/comments/:id/up_votes' do
+  @comment = Comment.find_by(params[:question_id])
+  @question = Question.find_by(params[:question_id])
+  @up_vote = @comment.votes.new(count: + 1, user_id: current_user.id)
+  if @up_vote.save
+    redirect "/questions/#{@question.id}"
+  else
+    erb :'/question/show'
+  end
+end
+
+post '/comments/:id/down_votes' do
+  @question = Question.find_by(params[:question_id])
+  @comment = Comment.find_by( id: params[:id])
+  # binding.pry
+  @down_vote = @comment.votes.new(count: - 1, user_id: current_user.id)
+  if @down_vote.save
+    redirect "/questions/#{@question.id}"
+  else
+    erb :'/question/show'
+  end
+end
+
 # Edit question
 # put '/questions/:question_id/comments/:id' do
 #   require_same_user(current_user)

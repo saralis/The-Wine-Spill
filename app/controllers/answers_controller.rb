@@ -10,32 +10,6 @@ post '/questions/:question_id/answers' do
   end
 end
 
-post '/answers/:id/up_votes' do
-  @question = Question.find(params[:id]) #define instance variable for view
-  @answer = Answer.find_by( id: params[:id])
-  @up_vote = @answer.votes.new(count: + 1, user_id: current_user.id)
-  if @up_vote.save
-    if request.xhr?
-      @answer.votes.sum(:count).to_s
-    else
-      redirect "/questions/#{@answer.question.id}"
-    end
-  else
-    erb :'/question/show'
-  end
-end
-
-post '/questions/:id/down_votes' do
-  @question = Question.find_by( id: params[:id])
-  @answer = Answer.find_by( id: params[:id])
-  @down_vote = @answer.votes.new(count: - 1, user_id: current_user.id)
-  if @down_vote.save
-    redirect "/questions/#{@question.id}"
-  else
-    erb :'/question/show'
-  end
-end
-
 put '/questions/:question_id/answers/:answers_id' do
   @question = Question.find_by(id: params[:question_id])
   same_user(@question.user)
