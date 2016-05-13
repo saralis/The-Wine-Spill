@@ -52,9 +52,11 @@
 
   <!-- Answer form -->
   </br>
+  <% if logged_in? %>
   Your Answer:
   <form id="answer-form" method="post" action="/questions/<%=@question.id%>/answers">
     <input name="answer[body]" type="text" placeholder="Drop some knowledge">
     <input type="image" src="/images/button.png" width="40">
   </form>
+  <% end %>
 </section>
