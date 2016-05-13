@@ -1,6 +1,8 @@
 body {
   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../images/grapevine.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #8C001A;
 }
 
 .container {
