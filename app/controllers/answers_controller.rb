@@ -48,12 +48,12 @@ put '/questions/:question_id/answers/:answers_id' do
   end
 end
 
-delete '/questions/:question_id/answers/:answers_id' do
+delete '/questions/:question_id/answers/:id' do
   @question = Question.find_by(id: params[:question_id])
   same_user(@question.user)
   @answer = @question.answers.find_by(id: params[:id])
   @answer.comments.each{|comment| comment.destroy}
-  @answer = @question.answers.find_by(params[:id])
+  @answer = @question.answers.find_by(id: params[:id])
   @answer.destroy
   redirect "/questions/#{@question.id}"
 end

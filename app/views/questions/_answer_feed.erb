@@ -16,7 +16,7 @@
      <% if same_user(answer.user) %>
             <form action="/questions/<%=@question.id%>/answers/<%=answer.id%>" method="post"> <!--Delete Form -->
               <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="Delete Answer">
+              <input type="image" src="/images/delete-button.png" width="55">
             </form>
     <% end %>
     <ul>
