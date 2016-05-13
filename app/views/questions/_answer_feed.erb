@@ -2,7 +2,7 @@
 <ul id="answers-list">
 <% @question.answers.each do |answer| %>
   <ul>
-    <form action="/answers/<%= answer.id %>/up_votes" method="post">
+    <form id="vote-up" action="/answers/<%= answer.id %>/up_votes" method="post">
       <input type="image" src='/images/grape-up-arrow.png' width="50">
     </form>
       <h3><%= answer.votes.sum(:count) %></h3>
