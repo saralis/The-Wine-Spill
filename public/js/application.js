@@ -16,9 +16,6 @@ $(document).ready(function() {
     $("#question-container").slideDown();
   });
 
-
-
-
 // Sort logic for each tab
 
   $("#viewed a").on("click", function(event) { // Adds the show class to the first element in the ids array
@@ -49,9 +46,32 @@ $(document).ready(function() {
   	$(this).css('background-color', '#8e44ad');
 
   });
+// AJAX for votes
+
+  $('#question-up').on('submit', function(event){
+    event.preventDefault();
+
+    $target = $(event.target);
+
+    $.ajax({
+      url: $target.attr('action'),
+      type: $target.attr('method'),
+      // dataType: 'json'
+    }).done(function(response){
+      $('#question-votes').html(response);
+    });
+  });
+
+
+
+
+
+
+
+
+
 
 });
 
 
-// AJAX for votes
 
